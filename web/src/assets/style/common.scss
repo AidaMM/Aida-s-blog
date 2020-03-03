@@ -1,0 +1,35 @@
+$colors: (
+  "p": #471ba4,
+  "o": #ea6b00,
+  "y": #fdad00,
+  "pk": #ed77ff,
+  "w": #fdfff9
+);
+
+@each $colorKey, $color in $colors {
+  .text-#{$colorKey} {
+    color: $color;
+  }
+
+  .bg-#{$colorKey} {
+    background-color: $color;
+  }
+}
+
+.m-top {
+  margin-top: 1rem;
+}
+.m-left {
+  margin-left: 1rem;
+}
+
+.flex {
+  display: flex;
+}
+.fr {
+  float: right;
+}
+/*  */
+/* .navbar-dark .navbar-nav .nav-link {
+  color: map-get($colors, 'pk');
+} */
