@@ -38,7 +38,6 @@ module.exports = app => {
     const model = await blogLabel.findByIdAndUpdate(id, req.body);
     res.send(model);
   })
-
   router.delete("/delLabelById/:id", async (req, res) => {
     const id = req.params.id
     const model = await blogLabel.findByIdAndDelete(id);
@@ -46,5 +45,12 @@ module.exports = app => {
       success: true
     });
   })
+  router.get('/listBlog/:id', async (req, res) => {
+    const cats = await blogLabel.find({
+      _id: req.params.id
+    }).populate('blogList').lean()
+    res.send(cats);
+  })
+
   app.use("/ly/api", router)
 };
