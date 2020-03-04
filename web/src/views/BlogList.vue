@@ -10,8 +10,28 @@
 
 <script>
 export default {
+  data() {
+    return {
+      blogList: {}
+    };
+  },
   props: {
-    blogList: Array
+    id: String
+  },
+  created() {
+    this.getBlogByLabel();
+  },
+  methods: {
+    async getBlogByLabel() {
+      if (!this.id) {
+        const result = await this.$http.get(`/listBlog`);
+        this.blogList = result.data;
+      } else {
+        const result2 = await this.$http.get(`/listBlog/${this.id}`);
+        console.log(result2);
+        this.blogList = result2.data[0].blogList;
+      }
+    }
   }
 };
 </script>

@@ -12,7 +12,9 @@ module.exports = app => {
     res.send(model);
   })
   router.get("/listBlog", async (req, res) => {
-    const model = await blog.find().populate('labels', 'label');
+    const model = await blog.find().populate('labels', 'label').sort({
+      updatedAt: 1
+    });
     res.send(model);
   })
   router.get("/getBlogById/:id", async (req, res) => {

@@ -2,7 +2,7 @@
   <b-navbar
     toggleable="lg"
     variant="faded"
-    type="dark"
+    type="light"
     v-show="$route.path!=='/blog'"
     class="fixed-top"
   >

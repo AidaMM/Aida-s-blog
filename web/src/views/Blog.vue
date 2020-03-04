@@ -1,16 +1,17 @@
 <template>
   <div id="top">
-    <b-navbar toggleable="lg" variant="faded" type="dark" class="shadow fixed-top">
+    <b-navbar toggleable="lg" variant="faded" type="light" class="bd-navbar fixed-top">
       <b-navbar-brand href="#">博客</b-navbar-brand>
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <b-nav-item to="/blog">最新博客</b-nav-item>
+          <b-nav-item to="/latestBlog" @click="label_id=-1" :class="{'active':label_id==-1}">最新博客</b-nav-item>
           <b-nav-item
             v-for="(label, index) in labels"
             :key="index"
-            @click="getBlogByLabel(label._id,index)"
-            :class="{'active':labelIndex==index}"
+            @click="label_id=label._id"
+            :to="`/blogList/${label._id}`"
+            :class="{'active':label_id==label._id}"
           >{{ label.label }}</b-nav-item>
         </b-navbar-nav>
       </b-collapse>
@@ -22,13 +23,14 @@
             <b-list-group-item
               v-for="(label, index) in labels"
               :key="index"
-              @click="getBlogByLabel(label._id,index)"
-              :class="{'active':labelIndex==index}"
+              @click="label_id=label._id"
+              :to="`/blogList/${label._id}`"
+              :class="{'active':label_id==label._id}"
             >{{ label.label }}</b-list-group-item>
           </b-list-group>
         </b-col>
         <b-col md="9" class="mt-6 ml">
-          <router-view :blogList="blogList" />
+          <router-view :key="$route.path" />
         </b-col>
         <b-col md="1" class="mt-6">
           <b-button-group
@@ -57,8 +59,7 @@ export default {
     return {
       isHovered: false,
       labels: [],
-      blogList: [],
-      labelIndex: 0
+      label_id: -1
     };
   },
   created() {
@@ -71,12 +72,6 @@ export default {
     async getAllLabels() {
       const result = await this.$http.get("/listLabel/-1");
       this.labels = result.data;
-      this.getBlogByLabel(this.labels[0]._id, 0);
-    },
-    async getBlogByLabel(labelId, index) {
-      this.labelIndex = index;
-      const result2 = await this.$http.get(`/listBlog/${labelId}`);
-      this.blogList = result2.data[0].blogList;
     }
   }
 };
