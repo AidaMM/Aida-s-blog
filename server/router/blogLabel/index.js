@@ -1,8 +1,7 @@
-/* 使用中间件 */
 module.exports = app => {
   const express = require("express");
-  /* express的子路由   mergeParams:true合并url参数 */
   const blogLabel = require("../../models/BlogLabel");
+  const auth = require('../../middleware/auth.js')
   const router = express.Router({
     mergeParams: true
   });
@@ -11,7 +10,6 @@ module.exports = app => {
     res.send(model);
   })
   router.get("/listLabel/:pageNum", async (req, res) => {
-    console.log(typeof req.params.pageNum);
     const pageNum = req.params.pageNum
     if (pageNum === "-1") {
       const model = await blogLabel.find()
@@ -26,7 +24,6 @@ module.exports = app => {
       const model = await blogLabel.find().skip(skip).limit(5);
       res.send(model);
     }
-
   })
   router.get("/findLabelById/:id", async (req, res) => {
     const id = req.params.id
@@ -45,12 +42,13 @@ module.exports = app => {
       success: true
     });
   })
-  router.get('/listBlog/:id', async (req, res) => {
+  router.get('/listBlogByLabelId/:id', async (req, res) => {
     const cats = await blogLabel.find({
       _id: req.params.id
-    }).populate('blogList').lean()
+    }).populate('blogList').lean();
     res.send(cats);
   })
 
-  app.use("/ly/api", router)
+  app.use("/ly/api", auth(), router)
+  app.use("/ly/web/api", router)
 };

@@ -1,44 +1,51 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-import Blog from '../views/Blog.vue'
-import BlogList from '../views/BlogList.vue'
-import BlogContent from '../views/BlogContent.vue'
-
 const http = require('../http')
 Vue.prototype.$http = http;
 Vue.use(VueRouter)
 
 const routes = [{
-    path: '/',
-    name: 'home',
-    component: Home
-  },
-  {
-    path: '/blog',
-    name: 'blog',
-    component: Blog,
-    children: [{
-        path: '/blogList/:id',
-        name: 'blogList',
-        component: BlogList,
-        props: true
-      },
-      {
-        path: '/latestBlog',
-        component: BlogList,
-      },
-      {
-        path: '/blogContent',
-        name: 'blogContent',
-        component: BlogContent
+  path: '/',
+  component: () => import('../views/Blog.vue'),
+  redirect: '/bloglist',
+  children: [{
+      path: '/bloglist',
+      component: () => import('../views/BlogList.vue'),
+      props: true,
+      meta: {
+        title: '最新博客'
       }
-    ]
-  }
-]
+    },
+    {
+      path: '/blogList/:id',
+      component: () => import('../views/BlogList.vue'),
+      props: true,
+      name: 'blogList',
+      meta: {
+        title: '博客列表'
+      }
+    },
+    {
+      path: '/blogContent/:id',
+      component: () => import('../views/BlogContent.vue'),
+      props: true,
+      meta: {
+        title: '博客详情'
+      }
+    }
+  ]
+}]
 
 const router = new VueRouter({
   routes
 })
+
+router.beforeEach((to, from, next) => {
+  if (to.meta.title) {
+    document.title = to.meta.title;
+  }
+  next();
+})
+
 
 export default router

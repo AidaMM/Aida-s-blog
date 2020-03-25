@@ -2,7 +2,8 @@
   <el-table :data="listBlog">
     <el-table-column prop="_id" label="_id" width="240"></el-table-column>
     <el-table-column prop="title" label="博客名称" width="220"></el-table-column>
-    <el-table-column prop="description" label="博客描述" width="220"></el-table-column>
+    <el-table-column prop="description" label="描述" width="110"></el-table-column>
+    <el-table-column prop="author.username" label="作者" width="110"></el-table-column>
     <el-table-column label="博客标签" prop="labels" width="220">
       <template slot-scope="scope">
         <el-tag type="info" v-for="(label,index) in scope.row.labels" :key="index">{{label.label}}</el-tag>
@@ -10,11 +11,7 @@
     </el-table-column>
     <el-table-column label="操作" width="420">
       <template slot-scope="scope">
-        <el-button
-          type="primary"
-          icon="el-icon-edit"
-          @click="$router.push(`/editBlog/${scope.row._id}`)"
-        ></el-button>
+        <el-button type="primary" icon="el-icon-edit" @click="$router.push(`/editBlog/${scope.row._id}`)"></el-button>
         <el-button type="danger" icon="el-icon-delete" @click="delBlogById(scope.row._id)"></el-button>
       </template>
     </el-table-column>
@@ -23,20 +20,20 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       listBlog: []
     };
   },
-  created() {
+  created () {
     this.fetchlistBlog();
   },
   methods: {
-    async fetchlistBlog() {
+    async fetchlistBlog () {
       const result = await this.$http.get("/listBlog");
       this.listBlog = result.data;
     },
-    async delBlogById(id) {
+    async delBlogById (id) {
       this.$confirm("此操作将永久删除该博客, 是否继续?", "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",

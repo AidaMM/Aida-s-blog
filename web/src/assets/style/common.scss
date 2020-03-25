@@ -1,35 +1,106 @@
-$colors: (
-  "p": #471ba4,
-  "o": #ea6b00,
-  "y": #fdad00,
-  "pk": #ed77ff,
-  "w": #fdfff9
-);
+/* reset */
+html,
+body,
+p,
+div,
+h1,
+button,
+input {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-@each $colorKey, $color in $colors {
-  .text-#{$colorKey} {
-    color: $color;
+a {
+  text-decoration: none;
+}
+
+html {
+  font-size: 100px;
+}
+
+button,
+input {
+  width: 1rem;
+  height: 0.4rem;
+  background-color: #ff512f;
+  outline: none;
+  border: none;
+  border-radius: 0.1rem;
+  margin-left: 0.1rem;
+
+}
+
+button {
+  width: 0.9rem;
+  height: 0.4rem;
+  background-color: #ff512f;
+  color: white;
+
+  &.sm {
+    width: 0.7rem;
+    height: 0.3rem;
+    background-color: #dd2476;
   }
+}
 
-  .bg-#{$colorKey} {
-    background-color: $color;
+input {
+  width: 2.5rem;
+  height: 0.4rem;
+  background-color: #fff;
+  color: #DD2476;
+  padding-left: 0.1rem;
+}
+
+@media(max-width:540px) {
+  html {
+    font-size: 84.375px;
   }
 }
 
-.m-top {
-  margin-top: 1rem;
-}
-.m-left {
-  margin-left: 1rem;
+/*Android常用宽度*/
+@media(max-width:480px) {
+  html {
+    font-size: 75px;
+  }
 }
 
-.flex {
-  display: flex;
+/*Android常用宽度*/
+@media(max-width:414px) {
+  html {
+    font-size: 64.69px;
+  }
 }
-.fr {
-  float: right;
+
+/*i6Plus,i7Plus宽度*/
+@media(max-width:375px) {
+  html {
+    font-size: 58.59px;
+  }
 }
-/*  */
-/* .navbar-dark .navbar-nav .nav-link {
-  color: map-get($colors, 'pk');
-} */
+
+/*i6,i7宽度*/
+@media(max-width:360px) {
+  html {
+    font-size: 56.25px;
+  }
+}
+
+/*Android常用宽度*/
+@media(max-width:320px) {
+  html {
+    font-size: 50px;
+  }
+}
+
+html,
+body {
+  height: 100%;
+  font-family: "微软雅黑";
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}

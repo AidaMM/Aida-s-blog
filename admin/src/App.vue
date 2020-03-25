@@ -1,9 +1,8 @@
 <template>
   <div id="app">
     <div class="header-nav">
-      <span>loly_zhang网站后台管理系统</span>
+      <span>Aida网站后台管理系统</span>
     </div>
-
     <router-view />
   </div>
 </template>
@@ -21,5 +20,6 @@ export default {
   border-bottom: 1px solid gray;
   line-height: 50px;
   font-size: 1.5rem;
+  padding-left: 30px;
 }
 </style>

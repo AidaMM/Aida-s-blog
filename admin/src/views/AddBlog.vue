@@ -10,21 +10,11 @@
       </el-form-item>
       <el-form-item label="博客类型">
         <el-select v-model="blog.labels" placeholder="请选择博客标签" multiple>
-          <el-option
-            v-for="(label, index) in labels"
-            :key="index"
-            :label="label.label"
-            :value="label._id"
-          ></el-option>
+          <el-option v-for="(label, index) in labels" :key="index" :label="label.label" :value="label._id"></el-option>
         </el-select>
       </el-form-item>
       <el-form-item label="博客内容">
-        <vue-editor
-          id="editor"
-          useCustomImageHandler
-          @image-added="handleImageAdded"
-          v-model="blog.body"
-        ></vue-editor>
+        <mavon-editor v-model="blog.body" ref="md" @change="change" @imgAdd="$imgAdd" style="min-height: 600px" />
       </el-form-item>
       <el-form-item size="large">
         <el-button type="primary" @click="addBlog">保存</el-button>
@@ -34,33 +24,47 @@
   </div>
 </template>
 <script>
-import { VueEditor } from "vue2-editor";
+import { mavonEditor } from 'mavon-editor'
+import 'mavon-editor/dist/css/index.css'
+
 export default {
   props: {
     id: String
   },
   components: {
-    VueEditor
+    mavonEditor
   },
-  data() {
+  data () {
     return {
       labels: [],
-      blog: {}
+      blog: {},
     };
   },
-  created() {
+  created () {
     this.getBlogLabels();
     this.id && this.getBlogById();
   },
   methods: {
-    async getBlogById() {
+    $imgAdd (pos, file) {
+      let formdata = new FormData();
+      formdata.append("file", file);
+      this.$http.post("upload", formdata).then(res => {
+        this.$refs.md.$img2Url(pos, res.data.url);
+      }).catch(err => {
+        console.log(err)
+      })
+    },
+    change (value, render) {
+      this.$set(this.blog, 'html', render)
+    },
+    async getBlogById () {
       const result = await this.$http.get(`/getBlogById/${this.id}`);
       this.blog = result.data;
       this.blog.labels = result.data.labels.map(currentValue => {
         return currentValue._id;
       });
     },
-    async addBlog() {
+    async addBlog () {
       if (!this.id) {
         await this.$http.post("/addBlog", this.blog);
       } else {
@@ -68,16 +72,9 @@ export default {
       }
       this.$router.push("/listBlog");
     },
-    async getBlogLabels() {
+    async getBlogLabels () {
       const result = await this.$http.get("/listLabel/-1");
       this.labels = result.data;
-    },
-    async handleImageAdded(file, Editor, cursorLocation, resetUploader) {
-      var formData = new FormData();
-      formData.append("file", file);
-      const res = await this.$http.post("upload", formData);
-      Editor.insertEmbed(cursorLocation, "image", res.data.url);
-      resetUploader();
     }
   }
 };

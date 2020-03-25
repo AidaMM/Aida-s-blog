@@ -35,7 +35,7 @@ export default {
     return {
       listLabel: [],
       total: 0,
-      pageSize: 5,
+      pageSize: 10,
       background: true,
       currentPage: 1
     };

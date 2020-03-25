@@ -3,12 +3,9 @@
     <router-view />
   </div>
 </template>
-
-<style >
+<style  lang="scss">
 #app {
-  background: url("./assets/images/app-bg.jpg") no-repeat;
-  background-size: 100%;
-  min-height: 768px;
-  background-attachment: fixed;
+  width: 100%;
+  height: 100%;
 }
 </style>
