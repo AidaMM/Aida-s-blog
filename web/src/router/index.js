@@ -1,9 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-<<<<<<< HEAD
-
-=======
->>>>>>> d2d1ae01c40e4e7ede800de1bf237d6edf0b8330
 const http = require('../http')
 Vue.prototype.$http = http;
 Vue.use(VueRouter)

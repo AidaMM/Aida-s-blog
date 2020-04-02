@@ -28,11 +28,7 @@ export default {
   },
   methods: {
     async  login () {
-<<<<<<< HEAD
       const res = await this.$http.post('../login', this.model);
-=======
-      const res = await this.$http.post('login', this.model);
->>>>>>> d2d1ae01c40e4e7ede800de1bf237d6edf0b8330
       localStorage.token = res.data.token;
       this.$router.push('/')
       this.$message({

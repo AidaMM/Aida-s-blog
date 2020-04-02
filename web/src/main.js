@@ -6,11 +6,7 @@ import router from './router'
 import './assets/style/common.scss'
 import '../node_modules/github-markdown-css/github-markdown.css';
 import hljs from 'highlight.js'
-<<<<<<< HEAD
 import 'highlight.js/styles/night-owl.css' //样式文件
-=======
-import 'highlight.js/styles/googlecode.css' //样式文件
->>>>>>> d2d1ae01c40e4e7ede800de1bf237d6edf0b8330
 
 
 Vue.directive('highlight', function (el) {
