@@ -16,7 +16,7 @@
         <p>
           阅读:<span>{{blog.count}}</span>
           评论:<span>{{blog.comments?blog.comments.length:0}}</span>
-          发布时间:<span>{{blog.updatedAt|formatDate}}</span>
+          发布时间:<span>{{blog.createdAt|formatDate}}</span>
         </p>
       </div>
       <div class="body_aticle">
@@ -203,7 +203,7 @@ export default {
 .markdown-body .highlight pre,
 .markdown-body pre {
   background-color: #011627;
-  font-size: 0.2rem;
+  font-size: 0.16rem;
 }
 .markdown-body {
   color: #919cb9;

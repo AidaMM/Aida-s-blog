@@ -32,24 +32,6 @@
         <p>
           本站属于个人博客网站,内容均属工作中的记录或总结
         </p>
-        <p>
-          <span>源码地址:</span>
-          <a href="#" target="_blank"> <img src="../assets/images/GitHub.png" alt="" /></a>
-        </p>
-      </div>
-      <div class="source">
-        <h3>友情链接</h3>
-        <ul>
-          <li><a href="https://cn.vuejs.org/">vue</a></li>
-          <li><a href="https://sass-lang.com/">sass</a></li>
-          <li><a href="">css</a></li>
-          <li><a href="">vue</a></li>
-          <li><a href="">vue</a></li>
-          <li><a href="">vue</a></li>
-          <li><a href="">vue</a></li>
-          <li><a href="">vue</a></li>
-        </ul>
-
       </div>
     </div>
   </div>
@@ -160,32 +142,11 @@ export default {
     .explain {
       display: flex;
       flex-direction: column;
+      text-align: center;
       p {
         margin: 0.1rem 0;
         span {
           padding-right: 0.2rem;
-        }
-      }
-      img:hover {
-        background-color: #fff;
-        border-radius: 20%;
-      }
-    }
-    .source {
-      vertical-align: middle;
-      ul {
-        list-style: none;
-        width: 80%;
-
-        li {
-          float: left;
-          margin: 0.1rem;
-          a {
-            color: #60606d;
-            &:hover {
-              color: #fff;
-            }
-          }
         }
       }
     }

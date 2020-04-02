@@ -5,7 +5,7 @@
         <router-link tag="div" :to="`/blogContent/${blog._id}`">
           <h2>{{blog.title}}</h2>
           <h4 class="description">{{blog.description}}</h4>
-          <p class="date"> {{blog.updatedAt|formatDate}}</p>
+          <p class="date"> {{blog.createdAt|formatDate}}</p>
         </router-link>
       </div>
     </div>
