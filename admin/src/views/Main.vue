@@ -4,7 +4,7 @@
       <el-menu router :default-active="$route.path">
         <el-submenu index="1">
           <template slot="title">
-            <i class="el-icon-message"></i>博客分类管理
+            <i class="el-icon-s-order"></i>博客分类管理
           </template>
           <el-menu-item-group>
             <el-menu-item index="/addBlogLabel">新建博客分类</el-menu-item>
@@ -13,11 +13,36 @@
         </el-submenu>
         <el-submenu index="2">
           <template slot="title">
-            <i class="el-icon-menu"></i>博客内容管理
+            <i class="el-icon-notebook-1"></i>博客内容管理
           </template>
           <el-menu-item-group>
             <el-menu-item index="/addBlog">新建博客</el-menu-item>
             <el-menu-item index="/listBlog">博客列表</el-menu-item>
+          </el-menu-item-group>
+        </el-submenu>
+        <el-submenu index="3">
+          <template slot="title">
+            <i class="el-icon-s-comment"></i>博客评论管理
+          </template>
+          <el-menu-item-group>
+            <el-menu-item index="/listComment">博客评论列表</el-menu-item>
+          </el-menu-item-group>
+        </el-submenu>
+        <el-submenu index="4">
+          <template slot="title">
+            <i class="el-icon-chat-dot-round"></i>网站留言管理
+          </template>
+          <el-menu-item-group>
+            <el-menu-item index="/listMessage">留言列表</el-menu-item>
+          </el-menu-item-group>
+        </el-submenu>
+        <el-submenu index="5">
+          <template slot="title">
+            <i class="el-icon-chat-dot-round"></i>管理员
+          </template>
+          <el-menu-item-group>
+            <el-menu-item index="/addUser">新建管理员</el-menu-item>
+            <el-menu-item index="/listUser">管理员列表</el-menu-item>
           </el-menu-item-group>
         </el-submenu>
       </el-menu>
@@ -44,7 +69,7 @@
 
 <script>
 export default {
-  data() {
+  data () {
     const item = {
       date: "2016-05-02",
       name: "王小虎",

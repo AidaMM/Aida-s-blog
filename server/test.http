@@ -1,1 +1,48 @@
-GET  http://localhost:3000/ly/api/listBlog/5e5cada9a3d5c927d046d11c
+@uri=http://localhost:3000/ly/api
+
+
+### 根据标签查询博客
+GET  {{uri}}/listBlogByLabelId/5e6da110d40a6e1c04d7340c
+
+### 根据查看博客
+GET  {{uri}}/listBlog
+
+###添加评论
+POST {{uri}}/addComment
+Content-Type: application/json
+
+{
+  "name":"lisi",
+  "content":"我是评论2",
+  "blogId":"5e6dc16f4b210219a8ff886f"
+}
+### 根据博客id查询blog信息
+GET  {{uri}}/getBlogById/5e6dc16f4b210219a8ff886f
+
+### 查询所有评论
+GET  {{uri}}/listComment
+
+###5e68e7ef029e390ce4076681
+
+###  添加标签
+POST {{uri}}/addLabel
+Content-Type: application/json
+
+{
+ "label":"es6"
+}
+### 查询所有评论
+GET  {{uri}}/listLabel/-1
+
+###
+PUT {{uri}}/updateBlogCountById/5e6dc16f4b210219a8ff886f
+Content-Type: application/json
+
+{
+  "count":6
+}
+### 根据博客id删除博客
+DELETE /delBlogById/5e6dc1294b210219a8ff886e
+
+###
+GET /getBlogByTitle/vue
