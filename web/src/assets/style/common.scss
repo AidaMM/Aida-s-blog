@@ -17,13 +17,20 @@ a {
 
 html {
   font-size: 100px;
+<<<<<<< HEAD
   color: #919cb9;
+=======
+>>>>>>> d2d1ae01c40e4e7ede800de1bf237d6edf0b8330
 }
 
 button,
 input {
   width: 1rem;
   height: 0.4rem;
+<<<<<<< HEAD
+=======
+  background-color: #ff512f;
+>>>>>>> d2d1ae01c40e4e7ede800de1bf237d6edf0b8330
   outline: none;
   border: none;
   border-radius: 0.1rem;
@@ -34,6 +41,7 @@ input {
 button {
   width: 0.9rem;
   height: 0.4rem;
+<<<<<<< HEAD
   background-color: #009688;
   color: white;
   cursor: pointer;
@@ -74,14 +82,48 @@ h4 {
 @media(max-width:480px) {
   html {
     font-size: 75px;
+=======
+  background-color: #ff512f;
+  color: white;
+
+  &.sm {
+    width: 0.7rem;
+    height: 0.3rem;
+    background-color: #dd2476;
+  }
+}
+
+input {
+  width: 2.5rem;
+  height: 0.4rem;
+  background-color: #fff;
+  color: #DD2476;
+  padding-left: 0.1rem;
+}
+
+@media(max-width:540px) {
+  html {
+    font-size: 84.375px;
+>>>>>>> d2d1ae01c40e4e7ede800de1bf237d6edf0b8330
   }
 }
 
 /*Android常用宽度*/
+<<<<<<< HEAD
+=======
+@media(max-width:480px) {
+  html {
+    font-size: 75px;
+  }
+}
+
+/*Android常用宽度*/
+>>>>>>> d2d1ae01c40e4e7ede800de1bf237d6edf0b8330
 @media(max-width:414px) {
   html {
     font-size: 64.69px;
   }
+<<<<<<< HEAD
 }
 
 /*i6Plus,i7Plus宽度*/
@@ -111,6 +153,37 @@ body {
   font-family: "微软雅黑";
 }
 
+=======
+}
+
+/*i6Plus,i7Plus宽度*/
+@media(max-width:375px) {
+  html {
+    font-size: 58.59px;
+  }
+}
+
+/*i6,i7宽度*/
+@media(max-width:360px) {
+  html {
+    font-size: 56.25px;
+  }
+}
+
+/*Android常用宽度*/
+@media(max-width:320px) {
+  html {
+    font-size: 50px;
+  }
+}
+
+html,
+body {
+  height: 100%;
+  font-family: "微软雅黑";
+}
+
+>>>>>>> d2d1ae01c40e4e7ede800de1bf237d6edf0b8330
 .clearfix:after {
   content: "";
   display: table;

@@ -1,8 +1,12 @@
 module.exports = app => {
   const express = require("express");
   const blog = require("../../models/Blog");
+<<<<<<< HEAD
   const auth = require('../../middleware/auth.js');
   const comment = require("../../models/Comment");
+=======
+  const auth = require('../../middleware/auth.js')
+>>>>>>> d2d1ae01c40e4e7ede800de1bf237d6edf0b8330
   const router = express.Router({
     mergeParams: true
   });
@@ -35,6 +39,10 @@ module.exports = app => {
   })
   router.get("/getBlogByTitle/:title", async (req, res) => {
     const keyword = req.params.title
+<<<<<<< HEAD
+=======
+    console.log(keyword);
+>>>>>>> d2d1ae01c40e4e7ede800de1bf237d6edf0b8330
     const reg = new RegExp(keyword, 'i')
     const model = await blog.find({
       $or: [{
@@ -58,9 +66,12 @@ module.exports = app => {
   router.delete("/delBlogById/:id", async (req, res) => {
     const id = req.params.id
     const model = await blog.findOneAndRemove(id);
+<<<<<<< HEAD
     const model2 = await comment.deleteMany({
       blogId: id
     })
+=======
+>>>>>>> d2d1ae01c40e4e7ede800de1bf237d6edf0b8330
     res.send({
       success: true
     });

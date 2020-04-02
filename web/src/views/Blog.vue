@@ -1,6 +1,7 @@
 <template>
   <div class="blog">
     <div class="blog_header">
+<<<<<<< HEAD
       <div class="blogLogo">
         <router-link to="/">
           Aida的博客
@@ -8,6 +9,12 @@
         <span></span>
       </div>
 
+=======
+      <router-link to="/" class="blogLogo">
+        <img src="../assets/images/avatar.png" alt="">
+      </router-link>
+      <span class="header_Signature">越努力 越幸运</span>
+>>>>>>> d2d1ae01c40e4e7ede800de1bf237d6edf0b8330
       <div class="search">
         <input type="text" placeholder="搜索博客" v-model="title" />
         <button @click="searchBlog">搜索</button>
@@ -25,6 +32,7 @@
         </div>
       </div>
       <router-view :key="$route.path" />
+<<<<<<< HEAD
     </div>
     <div class="footer">
       <div class="explain">
@@ -51,6 +59,8 @@
         </ul>
 
       </div>
+=======
+>>>>>>> d2d1ae01c40e4e7ede800de1bf237d6edf0b8330
     </div>
   </div>
 </template>
@@ -72,7 +82,10 @@ export default {
     searchBlog () {
       this.lableId = -2;
       this.$router.push({ path: '/blogList/-1', query: { title: this.title } })
+<<<<<<< HEAD
       this.title = "";
+=======
+>>>>>>> d2d1ae01c40e4e7ede800de1bf237d6edf0b8330
     },
     async getLabels () {
       const result = await this.$http.get('/listLabel/-1');
@@ -92,7 +105,11 @@ export default {
 <style lang="scss">
 .blog {
   .blog_header {
+<<<<<<< HEAD
     background-color: #1f2330;
+=======
+    background-color: #111d5e;
+>>>>>>> d2d1ae01c40e4e7ede800de1bf237d6edf0b8330
     height: 0.6rem;
     font-size: 0.14rem;
     display: flex;
@@ -103,6 +120,7 @@ export default {
     padding: 0 0.2rem;
     z-index: 1501;
     .blogLogo {
+<<<<<<< HEAD
       line-height: 0.85rem;
       a {
         padding-left: 0.1rem;
@@ -115,6 +133,27 @@ export default {
     padding-top: 0.9rem;
     min-height: 100vh;
     background-color: #27273a;
+=======
+      img {
+        width: 0.6rem;
+        height: 0.6rem;
+        &:hover {
+          transform: rotate(360deg);
+          transition: 1s;
+        }
+      }
+    }
+    .header_Signature {
+      font-size: 0.4rem;
+      font-family: "kaiti";
+      color: #dd2476;
+    }
+  }
+  .blog_content {
+    padding-top: 0.7rem;
+    min-height: 100vh;
+    background-color: #eee;
+>>>>>>> d2d1ae01c40e4e7ede800de1bf237d6edf0b8330
     display: flex;
     justify-content: flex-start;
     font-size: 0.16rem;
@@ -126,26 +165,43 @@ export default {
       left: 0.2rem;
     }
     .content_label {
+<<<<<<< HEAD
       min-width: 1.5rem;
       min-height: calc(100vh - 1rem);
       padding: 0.2rem 0.2rem;
       margin-left: 0.2rem;
       margin-right: 0.2rem;
       text-align: left;
+=======
+      flex-grow: 0;
+      background-color: #fff;
+      border-radius: 0.2rem;
+      padding: 0.2rem 0.2rem;
+      margin-left: 0.2rem;
+      margin-right: 0.2rem;
+>>>>>>> d2d1ae01c40e4e7ede800de1bf237d6edf0b8330
       &.show {
         display: block;
       }
       .label {
+<<<<<<< HEAD
         margin-top: 0.1rem;
         &.active {
           color: #009688;
           font-weight: 600;
+=======
+        font-weight: 600;
+        margin-top: 0.1rem;
+        &.active {
+          color: #dd2476;
+>>>>>>> d2d1ae01c40e4e7ede800de1bf237d6edf0b8330
         }
         &:hover {
           cursor: pointer;
         }
       }
     }
+<<<<<<< HEAD
   }
   .footer {
     height: 2rem;
@@ -189,6 +245,8 @@ export default {
         }
       }
     }
+=======
+>>>>>>> d2d1ae01c40e4e7ede800de1bf237d6edf0b8330
   }
 }
 @media screen and (max-width: 768px) {
@@ -198,6 +256,12 @@ export default {
       .blogLogo {
         display: none;
       }
+<<<<<<< HEAD
+=======
+      .header_Signature {
+        display: none;
+      }
+>>>>>>> d2d1ae01c40e4e7ede800de1bf237d6edf0b8330
     }
 
     .blog_content {
@@ -209,9 +273,12 @@ export default {
         display: none;
       }
     }
+<<<<<<< HEAD
     .footer {
       display: none;
     }
+=======
+>>>>>>> d2d1ae01c40e4e7ede800de1bf237d6edf0b8330
   }
 }
 </style>

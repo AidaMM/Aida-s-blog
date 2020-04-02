@@ -30,7 +30,11 @@ export default {
   },
   methods: {
     async fetchlistBlog () {
+<<<<<<< HEAD
       const result = await this.$http.get("/listBlog/0");
+=======
+      const result = await this.$http.get("/listBlog");
+>>>>>>> d2d1ae01c40e4e7ede800de1bf237d6edf0b8330
       this.listBlog = result.data;
     },
     async delBlogById (id) {
